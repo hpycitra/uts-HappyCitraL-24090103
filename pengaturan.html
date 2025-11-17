@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Sistem - Universitas Harkat Negeri</title>
+    <style>
+        /* CSS UMUM */
+        body { font-family: Arial, sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; background-color: #f0f0f0; }
+        .dashboard-wrapper { display: flex; width: 800px; height: 90vh; max-height: 900px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); overflow: hidden; }
+        
+        /* SIDEBAR STYLES */
+        .sidebar { width: 100px; background-color: #f8f8f8; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; padding-top: 80px; height: 100%; z-index: 10; }
+        .sidebar a { padding: 2px 0; text-align: center; display: flex; justify-content: center; align-items: center; text-decoration: none; width: 100%; transition: background-color 0.3s; box-sizing: border-box; }
+        .sidebar a:hover { background-color: #eeeeee; }
+        .sidebar .icon { width: 80px; height: 80px; filter: grayscale(100%) opacity(0.5); transition: opacity 0.3s, filter 0.3s; }
+        .sidebar a:hover .icon { opacity: 1; filter: none; }
+        .sidebar a.active-link { background-color: #eeeeee; padding-top: 2px; padding-bottom: 2px; border-left: 5px solid #4a4a4a; margin-left: -5px; width: calc(100% + 5px); }
+        .sidebar a.active-link .icon { filter: none; opacity: 1; }
+        
+        /* MAIN CONTENT & HEADER */
+        .main-content { flex-grow: 1; padding: 30px; background-color: #fff; overflow-y: auto; }
+        .header { margin-bottom: 20px; }
+        .header h1 { font-size: 28px; font-weight: bold; color: #333; margin: 0; }
+
+        /* Konten Pengaturan */
+        .settings-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-item label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .setting-item button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4a4a4a;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .setting-item button:hover {
+            background-color: #333;
+        }
+
+        /* ================= MODAL GLOBAL ================ */
+        .modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.35);
+            display: none; /* Default hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-box {
+            background: white;
+            width: 350px;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .modal-box label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .modal-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .modal-box button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cancel-btn { background: #ddd; margin-right: 5px; }
+        .save-btn { background: #4a4a4a; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        
+        <div class="sidebar">
+            <a href="dashboard.html" title="Dashboard"> 
+                <img src="assets/image/home.png" alt="Dashboard Icon" class="icon"/>
+            </a>
+            <a href="total-products.html" title="Data Produk">
+                <img src="assets/image/dataproduk.png" alt="Products Icon" class="icon"/>
+            </a>
+            <a href="total-sales.html" title="Penjualan">
+                <img src="assets/image/penjualan.png" alt="Sales Icon" class="icon"/>
+            </a>
+            <a href="laporan.html" title="Laporan"> 
+                <img src="assets/image/laporan.png" alt="Reports Icon" class="icon"/>
+            </a>
+            <a href="pengaturan.html" class="active-link" title="Pengaturan"> 
+                <img src="assets/image/pengaturan.png" alt="Settings Icon" class="icon"/>
+            </a>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <h1>Pengaturan Sistem</h1> 
+                <p>Kelola preferensi dan akun Anda di sini.</p>
+            </div>
+            
+            <div class="settings-container">
+                <h3>Pengaturan Akun</h3>
+                <div class="setting-item">
+                    <label>Ubah Kata Sandi</label>
+                    <button onclick="openChangePasswordModal()">Ubah</button>
+                </div>
+                <div class="setting-item">
+                    <label>Ubah Email Kontak</label>
+                    <button onclick="openChangeEmailModal()">Ubah</button>
+                </div>
+
+                <h3>Pengaturan Aplikasi</h3>
+                <div class="setting-item">
+                    <label>Format Mata Uang</label>
+                    <span>IDR (Rupiah)</span>
+                </div>
+                <div class="setting-item">
+                    <label>Ekspor Data Laporan</label>
+                    <button onclick="exportData()">Ekspor ke CSV</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="passwordModal" class="modal">
+        <div class="modal-box">
+            <h3>Ubah Kata Sandi</h3>
+            
+            <label for="oldPass">Kata Sandi Lama</label>
+            <input id="oldPass" type="password">
+            
+            <label for="newPass">Kata Sandi Baru</label>
+            <input id="newPass" type="password">
+
+            <label for="confirmPass">Konfirmasi Kata Sandi Baru</label>
+            <input id="confirmPass" type="password">
+
+            <div style="text-align:right; margin-top: 15px;">
+                <button class="cancel-btn" onclick="closePasswordModal()">Batal</button>
+                <button class="save-btn" onclick="savePassword()">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="emailModal" class="modal">
+        <div class="modal-box">
+            <h3>Ubah Email Kontak</h3>
+            
+            <label for="currentEmail">Email Saat Ini</label>
+            <input id="currentEmail" type="email" value="admin@uharkatnegeri.ac.id" disabled>
+            
+            <label for="newEmail">Email Baru</label>
+            <input id="newEmail" type="email">
+
+            <div style="text-align:right; margin-top: 15px;">
+                <button class="cancel-btn" onclick="closeEmailModal()">Batal</button>
+                <button class="save-btn" onclick="saveEmail()">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi Modal Kata Sandi
+        function openChangePasswordModal() {
+            document.getElementById("passwordModal").style.display = "flex";
+        }
+
+        function closePasswordModal() {
+            document.getElementById("passwordModal").style.display = "none";
+        }
+
+        function savePassword() {
+            closePasswordModal();
+            alert("Kata sandi berhasil diperbarui (Simulasi).");
+        }
+        
+        // Fungsi Modal Email
+        function openChangeEmailModal() {
+            document.getElementById("emailModal").style.display = "flex";
+        }
+
+        function closeEmailModal() {
+            document.getElementById("emailModal").style.display = "none";
+        }
+
+        function saveEmail() {
+            const newEmail = document.getElementById("newEmail").value;
+            if (newEmail.trim() === "") {
+                alert("Email baru tidak boleh kosong.");
+                return;
+            }
+            closeEmailModal();
+            alert(`Email berhasil diubah menjadi ${newEmail} (Simulasi).`);
+        }
+
+        // Fungsi Ekspor Data
+        function exportData() {
+            // Simulasi animasi/feedback untuk Ekspor
+            const exportButton = event.target;
+            const originalText = exportButton.textContent;
+            
+            exportButton.textContent = "Mengekspor...";
+            exportButton.disabled = true;
+
+            setTimeout(() => {
+                alert("File laporan telah berhasil diunduh (Simulasi Unduhan CSV).");
+                exportButton.textContent = originalText;
+                exportButton.disabled = false;
+            }, 1500); // Simulasi waktu proses 1.5 detik
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login - 30 Poin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="illustration-area">
+            <div class="illustration-placeholder">
+                <img src="assets/image/login_illustration.png" alt="Ilustrasi Halaman Login" class="login-illustration-image"> 
+            </div>
+        </div>
+
+        <div class="login-form-area">
+            <h2 class="welcome-text">Welcome Back!</h2>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <img src="assets/image/iconemail.png" alt="Email Icon" class="input-icon"> 
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                
+                <div class="input-group">
+                    <img src="assets/image/iconpassword.png" alt="Password Icon" class="input-icon">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                
+                <button type="submit" class="login-button">Login</button>
+            </form>
+
+            <div class="separator">
+                <hr class="line">
+                <span class="or-text">Or</span>
+                <hr class="line">
+            </div>
+
+            <div class="social-login">
+                <button class="social-button google-button">
+                    <img src="assets/image/iconggl.png" alt="Google Icon" class="social-icon"> Google
+                </button>
+                <button class="social-button facebook-button">
+                    <img src="assets/image/iconfb.png" alt="Facebook Icon" class="social-icon"> Facebook
+                </button>
+            </div>
+
+            <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+        </div>
+    </div>
+
+
+    <!-- 🔥 POPUP DARK MODE LOGIN (FINAL) -->
+    <div id="loginPopup" class="popup-overlay">
+        <div class="popup-box">
+            <h3>Login Berhasil 🎉</h3>
+            <p>Selamat datang di Dashboard</p>
+            <button id="popupOk">Lanjut</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (email === '' || password === '') {
+                alert('Email dan Password tidak boleh kosong!');
+            } else {
+
+                // 🔥 TAMPILKAN POPUP DARK MODE
+                document.getElementById("loginPopup").style.display = "flex";
+
+                document.getElementById("popupOk").onclick = function() {
+                    window.location.href = 'dashboard.html';
+                };
+            }
+        });
+    </script>
+</body>
+</html>

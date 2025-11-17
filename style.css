@@ -1,0 +1,627 @@
+/* Styling dasar */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5; 
+}
+
+/* Container utama login */
+.login-container {
+    display: flex;
+    width: 800px; 
+    max-width: 90%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+}
+
+/* Bagian Ilustrasi (kiri) */
+.illustration-area {
+    flex: 1; 
+    background-color: #f7f7f7; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.illustration-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-style: italic;
+    /* Dihapus: border: 1px dashed #ccc; karena sudah ada gambar */
+    min-height: 400px; 
+}
+
+/* --- ATURAN BARU UNTUK GAMBAR ILUSTRASI --- */
+.login-illustration-image {
+    max-width: 100%; 
+    max-height: 100%; 
+    height: auto; 
+    display: block;
+    object-fit: contain; /* Memastikan gambar sepenuhnya terlihat tanpa terpotong */
+}
+/* ------------------------------------------- */
+
+/* Bagian Form Login (kanan) */
+.login-form-area {
+    flex: 1; 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome-text {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Input Styling */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Styling Gambar Ikon Email/Password */
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 8px; 
+    transform: translateY(-50%);
+    width: 20px; 
+    height: 20px; 
+    object-fit: contain;
+    opacity: 0.6; 
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 35px; 
+    /* PERUBAHAN KRUSIAL: Border lebih gelap */
+    border: 1px solid #555; 
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Fokus tetap menggunakan border yang sangat gelap */
+.input-group input:focus {
+    border-color: #333; 
+}
+
+/* Forgot Password */
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 14px;
+    color: #5a5a5a;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+/* Tombol Login (Gaya Outline Figma) */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: white; 
+    /* PERUBAHAN KRUSIAL: Border lebih gelap */
+    border: 1px solid #555; 
+    color: #333; 
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-button:hover {
+    background-color: #f0f0f0; 
+    border-color: #333; /* Border menjadi hitam saat di-hover */
+}
+
+/* Separator OR */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.line {
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid #aaa; /* Garis separator dibuat sedikit lebih gelap */
+}
+
+.or-text {
+    padding: 0 15px;
+    color: #888;
+    font-size: 14px;
+}
+
+/* Social Login Buttons (Gaya Outline Figma) */
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.social-button {
+    flex: 1;
+    padding: 10px;
+    /* PERUBAHAN KRUSIAL: Border lebih gelap */
+    border: 1px solid #555; 
+    background-color: white;
+    color: #555;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 300; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.social-button:hover {
+    background-color: #f9f9f9;
+    border-color: #333; /* Border menjadi hitam saat di-hover */
+}
+
+/* Styling Gambar Ikon Social Media */
+.social-icon {
+    width: 20px; 
+    height: 20px;
+    margin-right: 8px; 
+    object-fit: contain;
+    opacity: 0.8; 
+}
+
+/* Sign Up Text */
+.signup-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #666;
+}
+
+.signup-text a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Media Query untuk tampilan mobile */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        width: 95%;
+    }
+    .illustration-area {
+        display: none; 
+    }
+    .login-form-area {
+        padding: 30px;
+    }
+    .social-login {
+        flex-direction: column;
+    }
+}
+
+/* CSS untuk Halaman Dashboard */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    color: #333;
+    background-color: #f0f0f0; 
+}
+
+.dashboard-wrapper {
+    display: flex;
+    width: 800px; 
+    height: 90vh; 
+    max-height: 900px; 
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+}
+
+.sidebar {
+    width: 100px;
+    background-color: #f8f8f8; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px; 
+    position: static; 
+    height: 100%;
+    z-index: 10;
+}
+
+.sidebar a {
+    padding: 2px 0; 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    transition: background-color 0.3s;
+    box-sizing: border-box; 
+}
+
+.sidebar a:hover {
+    background-color: #eeeeee; 
+}
+
+.sidebar .icon {
+    width: 80px; 
+    height: 80px;
+    filter: grayscale(100%) opacity(0.5); 
+    transition: opacity 0.3s, filter 0.3s;
+}
+
+.sidebar a:hover .icon {
+    opacity: 1; 
+    filter: none; 
+}
+
+.sidebar a.active {
+    background-color: #eeeeee; 
+    padding-top: 2px; 
+    padding-bottom: 2px; 
+    border-left: 5px solid #4a4a4a; 
+    margin-left: -5px;
+    width: calc(100% + 5px); 
+}
+
+.sidebar a.active .icon {
+    filter: none; 
+    opacity: 1; 
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff; 
+    overflow-y: auto; 
+    box-shadow: none; 
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.main-container-box {
+    background-color: transparent; 
+    padding: 0; 
+    border-radius: 0;
+    box-shadow: none;
+    border: none; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #ccc; 
+    transition: transform 0.2s;
+    cursor: pointer; /* DITAMBAHKAN */
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.card-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.navigation-card-area {
+    width: 100%;
+}
+
+.navigation-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px; 
+    width: 100%; 
+    background-color: #fff; 
+    border: 2px solid #ccc; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    color: #333; 
+    font-size: 18px; 
+    font-weight: 500;
+}
+
+.navigation-card:hover {
+    background-color: #f5f5f5;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* (SEMUA KODE CSS LAMA TETAP SAMA DI SINI) */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    color: #333;
+    background-color: #f0f0f0; 
+    font-size: 16px; 
+}
+
+.products-wrapper {
+    display: flex;
+    width: 800px;
+    height: 90vh;
+    max-height: 900px; 
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+}
+
+/* SIDEBAR STYLES */
+.sidebar {
+    width: 100px;
+    background-color: #f8f8f8; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px; 
+}
+
+.sidebar a {
+    padding: 2px 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover { background-color: #eeeeee; }
+
+.sidebar .icon {
+    width: 80px; 
+    height: 80px;
+    filter: grayscale(100%) opacity(0.5);
+    transition: 0.3s;
+}
+
+.sidebar a:hover .icon {
+    opacity: 1;
+    filter: grayscale(0%) opacity(1);
+}
+
+.sidebar a.active {
+    background-color: #eeeeee; 
+    border-left: 5px solid #4a4a4a; 
+    margin-left: -5px;
+    width: calc(100% + 5px); 
+}
+
+.sidebar a.active .icon {
+    filter: none;
+    opacity: 1;
+}
+
+/* MAIN CONTENT STYLES */
+.main-content { flex-grow: 1; padding: 30px; }
+.header { margin-bottom: 30px; }
+.header h1 { font-size: 28px; font-weight: bold; margin: 0; }
+
+.main-container-box {
+    background-color: #fff;
+    padding: 20px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; 
+}
+
+/* TABLE STYLES */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.product-table th, .product-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee; 
+}
+
+.product-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ACTION ICONS */
+.action-icon {
+    cursor: pointer;
+    margin-right: 10px;
+    width: 28px; 
+    height: 28px; 
+    transition: 0.2s;
+}
+
+.action-icon:hover { opacity: 0.7; }
+
+/* MODAL GLOBAL STYLES */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+    display: none; /* Default hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-box {
+    background: white;
+    width: 350px;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.modal-box label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.modal-box button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.cancel-btn { background: #ddd; margin-right: 5px; }
+.save-btn { background: #4a4a4a; color: white; }
+.delete-btn { background: red; color:white; }
+
+
+/* ===== DARK MODE POPUP LOGIN (FINAL) ===== */
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.popup-box {
+    width: 300px;
+    background: #1b1b1b;
+    color: white;
+    padding: 25px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-box h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.popup-box p {
+    font-size: 14px;
+    margin: 10px 0 22px;
+    opacity: 0.85;
+}
+
+#popupOk {
+    width: 100%;
+    padding: 10px;
+    background: #4a4a4a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+#popupOk:hover {
+    background: #5a5a5a;
+}
+
+/* Animasi muncul */
+@keyframes fadeIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}

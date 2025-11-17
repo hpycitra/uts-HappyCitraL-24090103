@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Revenue - Universitas Harkat Negeri</title>
+    <style>
+        /* CSS yang DIADAPTASI dari Dashboard Utama (Sama persis dengan total-sales.html) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh; 
+            color: #333;
+            background-color: #f0f0f0; 
+        }
+
+        .dashboard-wrapper {
+            display: flex;
+            width: 800px; 
+            height: 90vh; 
+            max-height: 900px; 
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden; 
+        }
+        
+        /* SIDEBAR */
+        .sidebar {
+            width: 100px;
+            background-color: #f8f8f8; 
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 80px; 
+            position: static; 
+            height: 100%;
+            z-index: 10;
+        }
+
+        .sidebar a {
+            padding: 2px 0; 
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            width: 100%;
+            transition: background-color 0.3s;
+            box-sizing: border-box; 
+        }
+        
+        .sidebar a:hover {
+            background-color: #eeeeee; 
+        }
+
+        .sidebar .icon {
+            width: 80px; 
+            height: 80px;
+            filter: grayscale(100%) opacity(0.5); 
+            transition: opacity 0.3s, filter 0.3s;
+        }
+        
+        .sidebar a:hover .icon {
+            opacity: 1; 
+            filter: none; 
+        }
+
+        /* Kelas active-link Dihapus atau Di-nonaktifkan di sini untuk Total Revenue */
+        .sidebar a.active-link {
+            /* Menonaktifkan styling aktif */
+            background-color: transparent; 
+            border-left: none; 
+            margin-left: 0;
+            width: 100%; 
+        }
+        
+        .sidebar a.active-link .icon {
+            /* Menonaktifkan efek filter */
+            filter: grayscale(100%) opacity(0.5); 
+            opacity: 0.5;
+        }
+        /* END SIDEBAR */
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: #fff; 
+            overflow-y: auto; 
+            box-shadow: none; 
+        }
+        
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        /* CONTENT BARU UNTUK HALAMAN DETAIL */
+        
+        .main-content-area {
+            padding: 0;
+            background: none;
+            box-shadow: none;
+        }
+
+        /* Search input */
+        .search-container {
+            margin-bottom: 20px;
+        }
+        
+        .search-container input {
+            width: 100%; 
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; 
+        }
+
+        /* TABLE STYLING */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0; 
+            border: 1px solid #ddd; 
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd; 
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f8f8f8;
+            font-weight: bold;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 4px 8px; 
+            font-size: 12px; 
+            font-weight: 500;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            color: white;
+            margin: 0 2px; 
+        }
+
+        .edit {
+            background: #cdcfce; /* Hijau */
+        }
+
+        .delete {
+            background: #c6c5c4; /* Merah */
+        }
+        
+        /* Scroll area untuk tabel */
+        .scroll-area {
+            max-height: calc(90vh - 180px); 
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <div class="sidebar">
+            <a href="dashboard.html" title="Dashboard"> 
+                <img src="assets/image/home.png" alt="Dashboard Icon" class="icon"/>
+            </a>
+            <a href="products.html" title="Data Produk">
+                <img src="assets/image/dataproduk.png" alt="Products Icon" class="icon"/>
+            </a>
+            <a href="penjualan.html" title="Penjualan">
+                <img src="assets/image/penjualan.png" alt="Sales Icon" class="icon"/>
+            </a>
+            <a href="laporan.html" title="Laporan"> 
+                <img src="assets/image/laporan.png" alt="Reports Icon" class="icon"/>
+            </a>
+            <a href="pengaturan.html" title="Pengaturan">
+                <img src="assets/image/pengaturan.png" alt="Settings Icon" class="icon"/>
+            </a>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Total Revenue (Rp 12.500.000)</h1> 
+            </div>
+
+            <div class="main-content-area">
+
+                <div class="search-container">
+                    <input type="text" id="search" placeholder="Cari data pendapatan...">
+                </div>
+
+                <div class="scroll-area">
+                    <table id="revenueTable">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Deskripsi</th>
+                                <th>Jumlah Transaksi</th>
+                                <th>Total Pemasukan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Data Dummy Detail Pendapatan (Untuk contoh baris tabel)
+    const revenue = [
+        {date: "2025-11-10", desc: "Penjualan Harian (Kasir A)", count: 20, amount: 2500000},
+        {date: "2025-11-09", desc: "Penjualan Harian (Kasir B)", count: 15, amount: 1800000},
+        {date: "2025-11-08", desc: "Penjualan Online", count: 10, amount: 3500000},
+        {date: "2025-11-07", desc: "Penjualan Harian (Kasir A)", count: 18, amount: 1200000},
+        {date: "2025-11-06", desc: "Penjualan Harian (Kasir B)", count: 12, amount: 800000},
+        {date: "2025-11-05", desc: "Penjualan Online", count: 25, amount: 2700000},
+    ];
+
+    const tableBody = document.getElementById("revenueTable").getElementsByTagName('tbody')[0];
+    let counter = 1;
+
+    function formatRupiah(number) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(number);
+    }
+
+    // Generate data ke tabel
+    revenue.forEach(r => {
+        let row = tableBody.insertRow();
+        
+        row.innerHTML = `
+            <td>${counter++}</td>
+            <td>${r.date}</td>
+            <td>${r.desc}</td>
+            <td>${r.count}</td>
+            <td>${formatRupiah(r.amount)}</td>
+            <td>
+                <button class="btn edit">Edit</button>
+                <button class="btn delete">Delete</button>
+            </td>
+        `;
+    });
+
+    // Fungsi pencarian
+    document.getElementById("search").addEventListener("keyup", function() {
+        let keyword = this.value.toLowerCase();
+        let rows = tableBody.getElementsByTagName("tr");
+
+        for (let i = 0; i < rows.length; i++) {
+            if (rows[i].parentNode.tagName.toLowerCase() === 'thead') continue; 
+            
+            let text = rows[i].innerText.toLowerCase();
+            rows[i].style.display = text.includes(keyword) ? "" : "none";
+        }
+    });
+</script>
+
+</body>
+</html>
