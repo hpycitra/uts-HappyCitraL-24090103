@@ -11,7 +11,7 @@ Tahun Akademik 2025/2026
 
 ## 📁 Link Penting
 - **GitHub Repository:** https://github.com/hpycitra/uts-HappyCitraL-24090103
-- **GitHub Pages:** https://username.github.io/uts-HappyCitraL-24090103/
+- **GitHub Pages:**  https://hpycitra.github.io/uts-HappyCitraL-24090103/
 
 
 ---
